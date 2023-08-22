@@ -1,0 +1,44 @@
+{
+  "name": "Travel_Blog",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
+    "@react-spring/parallax": "^9.7.2",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.3.6",
+    "daisyui": "^2.52.0",
+    "framer-motion": "^10.12.16",
+    "gsap": "^3.12.2",
+    "lottie-react": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "react-icons": "^4.10.1",
+    "react-image-file-resizer": "^0.4.8",
+    "react-redux": "^8.0.7",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.10.0",
+    "react-spinners": "^0.13.8",
+    "react-tilt": "^1.0.2",
+    "react-toastify": "^9.1.3",
+    "typewriter-effect": "^2.20.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.1",
+    "vite": "^4.1.0"
+  }
+}

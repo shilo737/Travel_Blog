@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+}
+.apps{
+  background-color: #210002;
+  display: grid;
+  place-items: center;
+  align-items: center;
+  height: 100vh;
+  overflow-x:hidden;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  transform: translateX(700%);
+  transition:transform 0.4s ease;
+}
+.box:nth-of-type(even){
+  transform: translateX(-700%);
+}
+.box.show{
+  transform: translateX(0);
+}
