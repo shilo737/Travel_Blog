@@ -5,13 +5,19 @@ import Loading from "../../../loading/Loading";
 import Modal from "../../modal/Modal";
 import EditPost from "../posts/EditPost";
 
-
-
 const MyPosts = () => {
-  const { error, loading, myPost, getMyPostUser,setCurrent,currentPost,deletePost } = usePosts();
+  const {
+    error,
+    loading,
+    myPost,
+    getMyPostUser,
+    setCurrent,
+    currentPost,
+    deletePost,
+  } = usePosts();
   const [editPost, setEditPost] = useState(false);
-  const [toggleEdit, setToggleEdit] =useState(false)
-  
+  const [toggleEdit, setToggleEdit] = useState(false);
+
   useEffect(() => {
     getMyPostUser();
   }, [toggleEdit]);
@@ -23,12 +29,11 @@ const MyPosts = () => {
 
   const deleteMyPost = (_id) => {
     if (!window.confirm("Are you sure you want to delete the post?")) {
-      return
+      return;
     }
-   deletePost(_id)
-   setToggleEdit(!toggleEdit)
-  }
-
+    deletePost(_id);
+    setToggleEdit(!toggleEdit);
+  };
 
   return (
     <div className="">
@@ -39,7 +44,6 @@ const MyPosts = () => {
         <Loading />
       ) : (
         <div className="grid grid-cols-1 gap-5">
-  
           {myPost.map((item) => (
             <div className="p-3" key={item._id}>
               <div className="card card-side bg-base-100 shadow-xl h-[60vh]">
@@ -62,19 +66,19 @@ const MyPosts = () => {
                     <div className="sm:grid sm:grid-cols-3 lg:grid-cols-4  gap-3 hidden">
                       {item.images.map((img, i) => (
                         <div key={i}>
-                          
-                            <img
-                              className="h-[10rem] w-[10rem] rounded-3xl"
-                              src={img}
-                              alt={`Image ${i}`}
-                            />
-                         
+                          <img
+                            className="h-[10rem] w-[10rem] rounded-3xl"
+                            src={img}
+                            alt={`Image ${i}`}
+                          />
                         </div>
                       ))}
                     </div>
                     <div className="absolute flex gap-3 right-2 bottom-4">
-                      <button className="btn btn-error"
-                      onClick={()=>deleteMyPost(item._id)}>
+                      <button
+                        className="btn btn-error"
+                        onClick={() => deleteMyPost(item._id)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"

@@ -49,6 +49,12 @@ const PostInfo = () => {
     getMyPostById(id);
   }, [refreshComment]);
 
+  useEffect(()=>{
+    setTimeout(()=>{
+     document.documentElement.scrollTop = 0;
+    },0)
+   },[])
+
   return (
     <div className=" text-white">
       {postInfo && (

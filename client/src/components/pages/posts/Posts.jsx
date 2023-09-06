@@ -63,6 +63,8 @@ const Posts = () => {
   allPosts()
   },[refreshPost])
 
+ 
+
   return (
     <div className="">
       {loading ? (

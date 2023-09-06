@@ -1,6 +1,6 @@
-// const API_URL = 'http://localhost:3004/';
+const API_URL = 'http://localhost:3004/';
 
-const API_URL=  "https://troubled-teddy-dog.cyclic.cloud/"
+// const API_URL="https://troubled-teddy-dog.cyclic.cloud/"
 
 export const TOKEN_KEY = 'token';
 

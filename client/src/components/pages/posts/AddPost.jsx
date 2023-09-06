@@ -4,6 +4,7 @@ import usePosts from "../../../hooks/usePosts";
 import { ADD_POST, UPLOAD_IMAGE } from "../../../constant/url";
 import { apiPost } from "../../../services/services";
 import Resizer from "react-image-file-resizer";
+import { country } from "../../apis/country";
 
 const AddPost = ({ setAddPost }) => {
   const { error, addNewPosts } = usePosts();
@@ -113,12 +114,21 @@ const AddPost = ({ setAddPost }) => {
           <label className="block text-white text-lg font-bold mb-2">
             Country
           </label>
-          <input
+          <select className="border font-bold text-sm text-black rounded block w-full p-2.5 bg-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+          {...register("location")}>
+            {country.map((con,i)=>(
+              <option value={con} key={i}>{con}</option>
+        
+            ))}
+
+
+          </select>
+          {/* <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight bg-white"
             type="text"
             placeholder="Enter Country"
             {...register("location", { required: true })}
-          />
+          /> */}
         </div>
         <div className="mb-4">
           <label className="block text-white text-lg font-bold mb-2">
