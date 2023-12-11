@@ -21,7 +21,7 @@ Run the Application: After installing the dependencies, run the following comman
 bash
 Copy code
 npm run dev
-This will launch the development server, and you can access Travel Diaries by navigating to http://localhost:3000 in your web browser.
+This will launch the development server, and you can access Travel Diaries by navigating to http://localhost:3004 in your web browser.
 
 Usage
 Writing Blogs
