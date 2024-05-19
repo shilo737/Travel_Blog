@@ -18,10 +18,9 @@ const usePosts = () => {
   );
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(true);
-  const [refreshComment,setRefreshComment] = useState(false)
-  const [refreshPost,setRefreshPost] = useState(false)
+  const [refreshComment, setRefreshComment] = useState(false);
+  const [refreshPost, setRefreshPost] = useState(false);
 
-          
   const allPosts = () => {
     dispatch(getAllPosts());
   };
@@ -29,16 +28,16 @@ const usePosts = () => {
     dispatch(getAllPosts("?page=" + _num));
   };
 
-  const categoriesPost = (_name) =>{
-    dispatch(getAllPosts("?category="+_name))
-  }
+  const categoriesPost = (_name) => {
+    dispatch(getAllPosts("?category=" + _name));
+  };
 
   const getMyPostById = (_id) => {
     dispatch(getInfoPost(_id));
   };
 
   const searchPosts = (_search) => {
-    dispatch(getAllPosts("?s="+_search));
+    dispatch(getAllPosts("?s=" + _search));
   };
 
   const getMyPostUser = () => {
@@ -47,7 +46,7 @@ const usePosts = () => {
 
   const addNewPosts = (bodyData) => {
     dispatch(addPosts(bodyData));
-    setRefreshPost(!refreshPost)
+    setRefreshPost(!refreshPost);
   };
   const setCurrent = (post) => {
     dispatch(setCurrentPost(post));
@@ -64,18 +63,18 @@ const usePosts = () => {
   const toggleFavorite = async (_id, cb) => {
     const { data } = await apiPatch(ADD_FAVORITE + _id);
     setRefresh(!refresh);
-    if(cb) cb()
+    if (cb) cb();
   };
 
-  const sendComment = async (_id ,_bodyComment) => {
-    const { data } = await apiPost(ADD_COMMENT + _id,{body:_bodyComment});
-    setRefreshComment(!refreshComment)
+  const sendComment = async (_id, _bodyComment) => {
+    const { data } = await apiPost(ADD_COMMENT + _id, { body: _bodyComment });
+    setRefreshComment(refreshComment => !refreshComment);
   };
 
-  const deleteComment = async (_id,comment_id)=> {
+  const deleteComment = async (_id, comment_id) => {
     const { data } = await apiDelete(`${DELETE_COMMENT}${_id}/${comment_id}`);
-    setRefreshComment(!refreshComment)
-  }
+    setRefreshComment(refreshComment => !refreshComment);
+  };
 
   return {
     posts,

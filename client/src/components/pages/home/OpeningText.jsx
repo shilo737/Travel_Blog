@@ -38,6 +38,7 @@ const OpeningText = () => {
               world has to offer.
             </p>
           </motion.div>
+          
           <motion.div variants={fadeIn("left", "tween", 0.5, 1)}>
           <p>
           <br />

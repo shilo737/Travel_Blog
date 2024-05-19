@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Tilt } from "react-tilt";
-import { fadeIn, staggerContainer } from "../../pages/design/motion";
-import usePosts from "../../../hooks/usePosts";
 import { useNavigate } from "react-router-dom";
-import '../design/button.css'
 
+import usePosts from "../../../hooks/usePosts";
+import { fadeIn, staggerContainer } from "../../pages/design/motion";
+import "../design/button.css";
 
-const ExploreCountry = ({ country, image, index,id }) => {
-  const nav = useNavigate()
+const ExploreCountry = ({ country, image, index, id }) => {
+  const nav = useNavigate();
   return (
-    <motion.div onClick={()=>nav(`/postInfo/${id}`)}
+    <motion.div
+      onClick={() => nav(`/postInfo/${id}`)}
       variants={fadeIn("right", "spring", index * 0.2, 0.75)}
       className="flex flex-col items-center justify-center"
     >
@@ -26,8 +27,8 @@ const ExploreCountry = ({ country, image, index,id }) => {
 };
 
 const HomeCard = () => {
-  const nav = useNavigate()
-const { allPosts, error, posts, loading } = usePosts();
+  const nav = useNavigate();
+  const { allPosts, error, posts, loading } = usePosts();
   useEffect(() => {
     allPosts();
   }, []);
@@ -59,7 +60,12 @@ const { allPosts, error, posts, loading } = usePosts();
         </div>
       )}
       <div className="flex justify-center">
-        <button onClick={()=>nav('/post')} className="shadow__btn mt-20 animate-bounce ">More blogs</button>
+        <button
+          onClick={() => nav("/post")}
+          className="shadow__btn mt-20 animate-bounce "
+        >
+          More blogs
+        </button>
       </div>
     </div>
   );

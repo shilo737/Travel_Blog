@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
-import email from '../../assets/email-sent.json'
+import email from "../../assets/email-sent.json";
 import { useNavigate } from "react-router-dom";
 const Footer = () => {
-
-  const nav = useNavigate()
+  const nav = useNavigate();
   return (
     <div className="border-t-2 container">
       <footer className="footer text-neutral-content p-3 justify-between items-center">
@@ -23,15 +22,17 @@ const Footer = () => {
           <p>
             Travel blog.
             <br />
-            Copyright © {new Date().getFullYear()} - All right reserved by Shilo .F
+            Copyright © {new Date().getFullYear()} - All right reserved by Shilo
+            .F
           </p>
         </div>
         <div>
           <span className="footer-title">Social</span>
           <div className="grid grid-flow-col gap-4">
-          
-            <a href="https://www.facebook.com/profile.php?id=61551070435643" target="_blank">
-              
+            <a
+              href="https://www.facebook.com/profile.php?id=61551070435643"
+              target="_blank"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -45,8 +46,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center">
-       <p className="text-[1.3em] italic">Any help we are by email</p> 
-        <button className="w-[6rem] mt-3" onClick={()=>nav('/sendEmail')}><Lottie animationData={email}/> </button>
+          <p className="text-[1.3em] italic">Any help we are by email</p>
+          <button className="w-[6rem] mt-3" onClick={() => nav("/sendEmail")}>
+            <Lottie animationData={email} />{" "}
+          </button>
         </div>
       </footer>
     </div>

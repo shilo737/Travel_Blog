@@ -7,6 +7,7 @@ const { routesInit } = require("./routes/configRouters");
 const cors = require("cors")
 
 
+
 const app = express()
 
 app.use(cors())
@@ -26,3 +27,4 @@ const server = http.createServer(app)
 
 
 server.listen(3004)
+

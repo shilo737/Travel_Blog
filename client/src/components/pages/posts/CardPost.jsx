@@ -21,7 +21,7 @@ const CardPost = ({ post, toggleFavorite,setRefreshDeletePost}) => {
    deletePost(_id)
    setRefreshDeletePost(true)
   }
-  
+
  return (
    
       <div className="containers">
