@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import usePosts from "../../../hooks/usePosts";
-import { useNavigate } from "react-router-dom";
-import Loading from "../../../loading/Loading";
+
 import Modal from "../../modal/Modal";
 import EditPost from "../posts/EditPost";
+import Loading from "../../../loading/Loading";
+import usePosts from "../../../hooks/usePosts";
 
 const MyPosts = () => {
   const {
-    error,
     loading,
     myPost,
     getMyPostUser,
@@ -15,6 +14,7 @@ const MyPosts = () => {
     currentPost,
     deletePost,
   } = usePosts();
+
   const [editPost, setEditPost] = useState(false);
   const [toggleEdit, setToggleEdit] = useState(false);
 
@@ -22,8 +22,8 @@ const MyPosts = () => {
     getMyPostUser();
   }, [toggleEdit]);
 
-  const handelEdit = (_item) => {
-    setCurrent(_item);
+  const handelEdit = (item) => {
+    setCurrent(item);
     setEditPost(true);
   };
 

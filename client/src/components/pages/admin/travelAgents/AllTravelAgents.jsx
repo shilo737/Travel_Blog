@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useTravelAgents from "../../../../hooks/useTravelAgents";
-import AddTravelAgent from "./AddTravelAgent";
-import useAdmin from "../../../../hooks/useAdmin";
+
 import Modal from "../../../modal/Modal";
-import Loading from "../../../../loading/Loading";
+import AddTravelAgent from "./AddTravelAgent";
 import useAuth from "../../../../hooks/useAuth";
+import Loading from "../../../../loading/Loading";
+import useTravelAgents from "../../../../hooks/useTravelAgents";
 
 const AllTravelAgents = () => {
   const { getAllAgents, loading, travelAgents, deleteAgent } =

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   getAllPosts,
   getMyPosts,
@@ -32,12 +33,13 @@ const usePosts = () => {
     dispatch(getAllPosts("?category=" + _name));
   };
 
-  const getMyPostById = (_id) => {
-    dispatch(getInfoPost(_id));
+  const getMyPostById = (id) => {
+    dispatch(getInfoPost(id));
   };
 
-  const searchPosts = (_search) => {
-    dispatch(getAllPosts("?s=" + _search));
+  const searchPosts = (search) => {
+    console.log("search" , search);
+    dispatch(getAllPosts("?s=" + search));
   };
 
   const getMyPostUser = () => {
@@ -56,24 +58,24 @@ const usePosts = () => {
     dispatch(upDatePosts(bodyData));
   };
 
-  const deletePost = (_id) => {
-    dispatch(deletePosts(_id));
+  const deletePost = (id) => {
+    dispatch(deletePosts(id));
   };
 
-  const toggleFavorite = async (_id, cb) => {
-    const { data } = await apiPatch(ADD_FAVORITE + _id);
+  const toggleFavorite = async (id, cb) => {
+    const { data } = await apiPatch(ADD_FAVORITE + id);
     setRefresh(!refresh);
     if (cb) cb();
   };
 
   const sendComment = async (_id, _bodyComment) => {
     const { data } = await apiPost(ADD_COMMENT + _id, { body: _bodyComment });
-    setRefreshComment(refreshComment => !refreshComment);
+    setRefreshComment((refreshComment) => !refreshComment);
   };
 
   const deleteComment = async (_id, comment_id) => {
     const { data } = await apiDelete(`${DELETE_COMMENT}${_id}/${comment_id}`);
-    setRefreshComment(refreshComment => !refreshComment);
+    setRefreshComment((refreshComment) => !refreshComment);
   };
 
   return {

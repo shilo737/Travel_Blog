@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 const PostInfoAndUser = ({ postInfo }) => {
   const [country, setCountry] = useState({});
 
-  const doApiCountry = async (_country) => {
+  const doApiCountry = async (country) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       const { data } = await axios.get(
-        `https://restcountries.com/v3.1/name/${_country}`
+        `https://restcountries.com/v3.1/name/${country}`
       );
   setCountry(data[0]);
     } catch (error) {
@@ -18,7 +18,7 @@ const PostInfoAndUser = ({ postInfo }) => {
 
   useEffect(() => {
     doApiCountry(postInfo?.location);
-  }, [postInfo]);
+  }, [postInfo.location]);
 
   return (
     <div>

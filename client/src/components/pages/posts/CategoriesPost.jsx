@@ -2,8 +2,9 @@ import React from "react";
 import usePosts from "../../../hooks/usePosts";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../../pages/design/motion";
-const CategoriesPost = () => {
-  const { categoriesPost } = usePosts();
+
+const CategoriesPost = ({ categoriesPost }) => {
+  
   const continents = [
     "europe",
     "africa",
@@ -23,7 +24,7 @@ const CategoriesPost = () => {
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
-         viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.25 }}
       >
         <motion.div variants={fadeIn("right", "tween", 0.5, 1)}>
           <div className="grid xl:grid-cols-7 sm:grid-cols-3 grid-cols-2 gap-5 justify-center">

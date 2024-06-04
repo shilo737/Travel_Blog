@@ -1,5 +1,7 @@
 import React from 'react'
+
 import './loading.css'
+
 const Loading = () => {
   return (
     <div className='font-serif flex justify-center items-center min-h-[100vh]'>

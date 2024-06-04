@@ -1,15 +1,15 @@
-import React from "react";
-import usePosts from "../../../hooks/usePosts";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import PostInfoAndUser from "./PostInfoAndUser";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
 import { RiSendPlane2Fill } from "react-icons/ri";
+
 import "../design/button.css";
-import Weather from "../../apis/weather/Weather";
 import useAuth from "../../../hooks/useAuth";
+import usePosts from "../../../hooks/usePosts";
+import PostInfoAndUser from "./PostInfoAndUser";
+import Weather from "../../apis/weather/Weather";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const PostInfo = () => {
   const {
@@ -19,41 +19,45 @@ const PostInfo = () => {
     refreshComment,
     deleteComment,
   } = usePosts();
+
   const {
     handleSubmit,
     register,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
+
+  console.log(getValues());
+
   const { id } = useParams();
   const { user } = useAuth();
 
   const [isExpanded, setIsExpanded] = useState(false);
   const maxDisplayLength = 500;
+
   const toggleTextVisibility = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const onSub = (_bodyData) => {
-    sendComment(id, _bodyData.body);
+  const onSub = (bodyData) => {
+    sendComment(id, bodyData.body);
     reset();
-    console.log(_bodyData);
   };
 
-  const deleteCommentById = (_comment_id) => {
-    deleteComment(id, _comment_id);
-    console.log("delete");
+  const deleteCommentById = (commentId) => {
+    deleteComment(id, commentId);
   };
 
   useEffect(() => {
     getMyPostById(id);
   }, [refreshComment]);
 
-  useEffect(()=>{
-    setTimeout(()=>{
-     document.documentElement.scrollTop = 0;
-    },0)
-   },[])
+  useEffect(() => {
+    setTimeout(() => {
+      document.documentElement.scrollTop = 0;
+    }, 0);
+  }, []);
 
   return (
     <div className=" text-white">
@@ -64,7 +68,6 @@ const PostInfo = () => {
             <div className="text-[2em] italic font-serif font-bold">
               {postInfo?.category} » {postInfo?.location} » {postInfo?.title}
             </div>
-
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-12 lg:col-span-8">
                 <div className=" p-4 rounded-md">
@@ -116,7 +119,6 @@ const PostInfo = () => {
           <div className="Comments container mx-auto text-white py-5">
             <form onSubmit={handleSubmit(onSub)}>
               <div className="col-span-full relative py-14">
-                {" "}
                 <div className="mt-5 ">
                   <textarea
                     {...register("body", {
@@ -129,9 +131,10 @@ const PostInfo = () => {
                   />
                 </div>
                 <div className="flex flex-row-reverse pb-8 absolute w-1/2">
-                  {!errors.body && (
+                  {!errors.body  && (
                     <button type="submit" className="shadow__btn btn-info">
-                      <RiSendPlane2Fill color="white" />
+
+                        <RiSendPlane2Fill color="white" />
                     </button>
                   )}
                 </div>
@@ -169,7 +172,7 @@ const PostInfo = () => {
                           {Math.floor(
                             (new Date() - new Date(item.createdAt)) /
                               (1000 * 60 * 60 * 24)
-                          )}{" "}
+                          )}
                           days ago
                         </p>
                       )}

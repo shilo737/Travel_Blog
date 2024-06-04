@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+
+import CardPost from "../posts/CardPost";
+import usePosts from "../../../hooks/usePosts";
+import Loading from "../../../loading/Loading";
 import { apiGet } from "../../../services/services";
 import { GET_MY_FAVORITE } from "../../../constant/url";
-import Loading from "../../../loading/Loading";
 
-import usePosts from "../../../hooks/usePosts";
-import CardPost from "../posts/CardPost";
 const Favorite = () => {
   const { toggleFavorite, refresh } = usePosts();
   const [favorite, setFavorite] = useState([]);
@@ -15,7 +16,7 @@ const Favorite = () => {
     setFavorite(data);
     setLoading(false);
   };
-  
+
   useEffect(() => {
     fetchFavorite();
   }, [refresh]);

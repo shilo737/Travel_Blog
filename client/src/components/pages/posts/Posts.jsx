@@ -1,17 +1,19 @@
+import { BsSearch } from "react-icons/bs";
 import React, { useEffect,useState } from "react";
-import usePosts from "../../../hooks/usePosts";
-import Loading from "../../../loading/Loading";
-import Modal from "../../modal/Modal";
-import AddPost from "../posts/AddPost";
-import CardPost from "./CardPost";
+
 import "./../design/input.css";
 import "./../design/button.css";
+import CardPost from "./CardPost";
 import UsersImg from "../UsersImg";
-import { BsSearch } from "react-icons/bs";
+import Modal from "../../modal/Modal";
+import AddPost from "../posts/AddPost";
 import useAuth from "../../../hooks/useAuth";
 import CategoriesPost from "./CategoriesPost";
+import Loading from "../../../loading/Loading";
+import usePosts from "../../../hooks/usePosts";
 
 const Posts = () => {
+
   const {
     posts,
     loading,
@@ -19,8 +21,8 @@ const Posts = () => {
     toggleFavorite,
     searchPosts,
     refreshPost,
-    
-    allPosts
+    allPosts,
+    categoriesPost
   } = usePosts();
 
   const {user} = useAuth()
@@ -28,6 +30,9 @@ const Posts = () => {
   const [pages, setPages] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [refreshDeletePost, setRefreshDeletePost] = useState(false)
+ 
+  console.log(searchText);
+
   const plus = () => {
     if (posts.length > 1) {
       let pagesNumber = parseInt(pages);
@@ -66,7 +71,7 @@ const Posts = () => {
  
 
   return (
-    <div className="">
+    <>
       {loading ? (
         <Loading />
       ) : (
@@ -88,23 +93,7 @@ const Posts = () => {
                 <br /> and embark on unforgettable escapades that will enrich
                 your soul and leave you with <br /> cherished memories.
               </p>
-              <div className="textSearch text-[2em] font-serif mt-5">
-                Search blogs
-              </div>
 
-              <div className="searchBox my-5">
-                <div className="shadow-input"></div>
-                <input
-                  className="font-serif italic"
-                  type="text"
-                  placeholder="Search"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                />
-
-                <BsSearch onClick={handleSearch} className="search-icon" />
-              </div>
             </div>
           </div>
           <UsersImg />
@@ -126,7 +115,7 @@ const Posts = () => {
             </div>}
 
             <div className="my-20">
-              <CategoriesPost/>
+              <CategoriesPost categoriesPost={categoriesPost}/>
             </div>
 
             <div className="join flex items-center justify-center mt-20">
@@ -148,7 +137,23 @@ const Posts = () => {
                 »
               </button>
             </div>
-            
+            <div className="textSearch text-[2em] font-serif mt-5">
+                Search blogs
+              </div>
+
+              <div className="searchBox my-5">
+                <div className="shadow-input"></div>
+                <input
+                  className="font-serif italic"
+                  type="text"
+                  placeholder="Search"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+
+                <BsSearch onClick={handleSearch} className="search-icon" />
+              </div>
 
             <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
               {posts.map((item) => (
@@ -157,6 +162,7 @@ const Posts = () => {
                   post={item}
                   toggleFavorite={toggleFavorite}
                   setRefreshDeletePost={setRefreshDeletePost}
+                  user={user}
                 />
               ))}
             </div>
@@ -169,7 +175,7 @@ const Posts = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

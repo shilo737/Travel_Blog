@@ -1,19 +1,19 @@
 import React from "react";
-import useAuth from "../../../hooks/useAuth";
-import Loading from "../../../loading/Loading";
-import MyPosts from "./MyPosts";
 import Resizer from "react-image-file-resizer";
 import { useForm } from "react-hook-form";
+
+import MyPosts from "./MyPosts";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../../../loading/Loading";
 import { apiPost } from "../../../services/services";
 import { UPLOAD_IMAGE } from "../../../constant/url";
 
 const ProfileUser = () => {
-  const { user, loading,error,changeProfileImage } = useAuth();
+  const { user, loading, error, changeProfileImage } = useAuth();
+
   const {
     handleSubmit,
     register,
-    reset,
-    getValues,
     formState: { errors },
   } = useForm();
 
@@ -32,44 +32,44 @@ const ProfileUser = () => {
         "blob",
         500,
         500,
-
         (error) => {
           reject(error);
         }
       );
     });
   };
-const onSub = async( _bodyData) =>{
-  try {
-    const img = await resizeImage(_bodyData.profileImage[0]);
-    if (img) {
-      const reader = new FileReader();
-      reader.readAsDataURL(img);
-      reader.onload = async () => {
-        const imgData = reader.result;
-        try {
-          const data = await apiPost(UPLOAD_IMAGE, { myFile: imgData });
-          if (data) {
-            console.log(data);
-            delete _bodyData.profileImage;
-            _bodyData.profileImage = data.data.secure_url;
-            if (!error) {
-              console.log("work");
-              changeProfileImage(_bodyData)
+
+  const onSub = async (_bodyData) => {
+    try {
+      const img = await resizeImage(_bodyData.profileImage[0]);
+      if (img) {
+        const reader = new FileReader();
+        reader.readAsDataURL(img);
+        reader.onload = async () => {
+          const imgData = reader.result;
+          try {
+            const data = await apiPost(UPLOAD_IMAGE, { myFile: imgData });
+            if (data) {
+              console.log(data);
+              delete _bodyData.profileImage;
+              _bodyData.profileImage = data.data.secure_url;
+              if (!error) {
+                console.log("work");
+                changeProfileImage(_bodyData);
+              }
             }
+          } catch (error) {
+            console.log(error);
           }
-        } catch (error) {
-          console.log(error);
-        }
-      };
+        };
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-}
-  
+  };
+
   return (
-    <div className="">
+    <div>
       {loading ? (
         <Loading />
       ) : (
@@ -87,7 +87,7 @@ const onSub = async( _bodyData) =>{
               />
               <div className="flex rounded-full absolute ml-28 mt-10">
                 <form action="" onSubmit={handleSubmit(onSub)}>
-                <label className="flex cursor-pointer  appearance-none items-center justify-center rounded-full  transition-all hover:border-primary-300">
+                  <label className="flex cursor-pointer  appearance-none items-center justify-center rounded-full  transition-all hover:border-primary-300">
                     <div className="space-y-1 text-center">
                       <div className="mx-auto inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
                         <svg
@@ -106,16 +106,18 @@ const onSub = async( _bodyData) =>{
                         </svg>
                       </div>
                     </div>
-                    <input  {...register("profileImage", { required: true })}
+                    <input
+                      {...register("profileImage", { required: true })}
                       accept="image/*"
                       type="file"
                       className="sr-only"
                     />
                   </label>
-                  <button type="submit" className="">Change</button>
+                  <button type="submit" className="">
+                    Change
+                  </button>
                 </form>
-                  
-                </div>
+              </div>
               <h1 className="text-2xl font-semibold mt-7">{user?.name}</h1>
               <h4 className="text-xl font-semibold">Blogger</h4>
             </div>
@@ -155,9 +157,7 @@ const onSub = async( _bodyData) =>{
                   </div>
                 </div>
               </div>
-              <div>
-                <MyPosts />
-              </div>
+              <MyPosts />
             </div>
           </div>
         </div>

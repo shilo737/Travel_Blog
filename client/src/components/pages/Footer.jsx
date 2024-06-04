@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Lottie from "lottie-react";
-import email from "../../assets/email-sent.json";
 import { useNavigate } from "react-router-dom";
+
+import email from "../../assets/email-sent.json";
 const Footer = () => {
   const nav = useNavigate();
   return (
@@ -48,7 +49,7 @@ const Footer = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="text-[1.3em] italic">Any help we are by email</p>
           <button className="w-[6rem] mt-3" onClick={() => nav("/sendEmail")}>
-            <Lottie animationData={email} />{" "}
+            <Lottie animationData={email} />
           </button>
         </div>
       </footer>
