@@ -37,7 +37,7 @@ const ScrollImage = () => {
           alt="Mountains background"
         />
         <h2 id="text" ref={textRef}>
-          Travel blog
+            Traveling Pen
         </h2>
         <img
           src="https://aryan-tayal.github.io/Mountains-Parallax/man.png"
@@ -71,7 +71,7 @@ const ScrollImage = () => {
         />
       </section>
       <section className="secText">
-        <h2>Welcome to Travel blog</h2>
+        <h2>Welcome to Traveling Pen</h2>
         <OpeningText />
       </section>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

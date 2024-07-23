@@ -1,8 +1,8 @@
-Travel Diaries - A Private Travel Blog
+Travel Diaries - A Private Traveling Pen
 Welcome to Travel Diaries, your personal space for documenting and planning your unforgettable journeys!
 
 Project Overview
-Travel Diaries is a private travel blog where you can capture and share your travel experiences. Additionally, 
+Travel Diaries is a private Traveling Pen where you can capture and share your travel experiences. Additionally, 
 it provides a convenient tool for planning your future trips. Whether you're an avid globetrotter or a weekend adventurer,
 Travel Diaries is designed to make your travel blogging and planning a seamless and enjoyable experience.
 
@@ -25,7 +25,7 @@ This will launch the development server, and you can access Travel Diaries by na
 
 Usage
 Writing Blogs
-Log in to your account to access your private travel blog.
+Log in to your account to access your private Traveling Pen.
 Click on the "Write a New Blog" button to create a new blog entry.
 Add details about your trip, upload photos, and share your experiences.
 Trip Planning Tool

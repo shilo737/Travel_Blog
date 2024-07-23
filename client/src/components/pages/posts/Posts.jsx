@@ -87,7 +87,7 @@ const Posts = () => {
             <div className="blogs absolute top-20 lg:top-1/4 text-white lg:left-1/4 lg:right-72">
               <h1 className="text-[3em]">Blogs</h1>
               <p className="text-[1.3em] ">
-                At our travel blog website, we believe that the world is an open
+                At our Traveling Pen website, we believe that the world is an open
                 book waiting to be explored, <br /> and we're eager to pen new
                 chapters of adventure with you. So, dive in, get inspired,{" "}
                 <br /> and embark on unforgettable escapades that will enrich

@@ -27,7 +27,6 @@ const ExploreCountry = ({ country, image, index, id }) => {
 };
 
 const HomeCard = () => {
-  const nav = useNavigate();
   const { allPosts, error, posts, loading } = usePosts();
 
   useEffect(() => {

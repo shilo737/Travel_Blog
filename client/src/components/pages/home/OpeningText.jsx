@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import {
   fadeIn,
   staggerContainer,
-  travelVariants,
 } from "../../pages/design/motion";
 
 const OpeningText = () => {
   return (
-    <div className="">
+    <div>
       <section>
         <motion.div
           variants={staggerContainer}
@@ -28,7 +27,7 @@ const OpeningText = () => {
               <br />
               Whether you've conquered towering mountains, wandered through
               bustling cities, or immersed yourself in untouched natural
-              wonders, Travel blog is your platform to showcase the magic of your
+              wonders, Traveling Pen is your platform to showcase the magic of your
               travel tales.
               <br />
               <br />
@@ -42,14 +41,14 @@ const OpeningText = () => {
           <motion.div variants={fadeIn("left", "tween", 0.5, 1)}>
           <p>
           <br />
-          Travel blog is more than just a website—it's a dynamic hub for
+          Traveling Pen is more than just a website—it's a dynamic hub for
           travelers to gather, connect, and ignite their passion for
           exploration. Join us and become part of a supportive community that
           celebrates the joy of travel.
           <br />
           <br />
           Start your adventure today. Grab your pen, unleash your wanderlust,
-          and let Travel blog be your trusted companion on every step of your
+          and let Traveling Pen be your trusted companion on every step of your
           travel journey. Happy exploring!
         </p>
           </motion.div>
