@@ -6,7 +6,6 @@ const {
 } = require("../../model/userModel");
 const bcrypt = require("bcrypt");
 
-
 exports.getAllUsers = async (req, res) => {
   const data = await UserModel.find({});
   res.json(data);
@@ -15,8 +14,10 @@ exports.getAllUsers = async (req, res) => {
 exports.getUserInfo = async (req, res) => {
   try {
     const user = await UserModel.findOne(
-      { _id: req.tokenData._id },{ password: 0 ,__v:0, updatedAt:0}).populate("posts");
-    res.json({user});
+      { _id: req.tokenData._id },
+      { password: 0, __v: 0, updatedAt: 0 }
+    ).populate("posts");
+    res.json({ user });
   } catch (err) {
     console.log(err);
     res.status(502).json({ err });
@@ -34,6 +35,8 @@ exports.getUsersList = async (req, res) => {
 };
 
 exports.signUpUsers = async (req, res) => {
+      console.log("req.body", req.body);
+
   const validBody = validateUser(req.body);
   if (validBody.error) {
     return res.status(401).json(validBody.error.details);
@@ -41,6 +44,7 @@ exports.signUpUsers = async (req, res) => {
 
   try {
     const user = new UserModel(req.body);
+
     user.password = await bcrypt.hash(user.password, 10);
     await user.save();
     user.password = "*****";
@@ -81,13 +85,12 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-
 exports.updateProfileImage = async (req, res) => {
   try {
     const { profileImage } = req.body;
 
     if (!profileImage) {
-      return res.status(400).json({ error: 'Missing profileImage data' });
+      return res.status(400).json({ error: "Missing profileImage data" });
     }
 
     const data = await UserModel.updateOne(
@@ -98,11 +101,11 @@ exports.updateProfileImage = async (req, res) => {
     res.json(data);
   } catch (err) {
     console.log(err);
-    res.status(502).json({ error: 'An error occurred while updating the profile image' });
+    res
+      .status(502)
+      .json({ error: "An error occurred while updating the profile image" });
   }
 };
-
-
 
 exports.deleteUser = async (req, res) => {
   try {
@@ -140,6 +143,3 @@ exports.changeRoleUser = async (req, res) => {
     res.status(502).json({ err });
   }
 };
-
-
-
